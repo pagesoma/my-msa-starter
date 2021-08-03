@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/msa_starter
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: msa
+    password: password
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: MYSQL
+    show-sql: false
+
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: false

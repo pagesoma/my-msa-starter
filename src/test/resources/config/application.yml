@@ -1,0 +1,44 @@
+server:
+  port: 9091
+
+spring:
+  profiles:
+    active: test
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:msastarter;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    hikari:
+      auto-commit: false
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL5Dialect
+
+  flyway:
+    enabled: true
+    encoding: UTF-8
+    user: sa
+    password:
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    baseline-version: 0
+
+application:
+  rest-template:
+    connection-timeout: 2000
+    read-timeout: 5000
+  event-publisher:
+    enabled: false

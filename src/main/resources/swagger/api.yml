@@ -1,0 +1,14 @@
+openapi: "3.0.3"
+info:
+  title: "MSA Starter"
+  version: 0.0.1
+  description: |
+    MSA Starter
+
+    # Introduction
+
+servers:
+  - url: http://localhost:9091
+    description: local server
+
+

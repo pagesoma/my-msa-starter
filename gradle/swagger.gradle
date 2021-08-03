@@ -1,0 +1,30 @@
+openApiGenerate {
+    generatorName = "spring"
+    inputSpec = "$rootDir/src/main/resources/swagger/api.yml".toString()
+    outputDir = "$buildDir/openapi".toString()
+    apiPackage = "com.starter.api"
+    modelPackage = "com.starter.api.model"
+    modelNameSuffix = "Dto"
+    apiFilesConstrainedTo = [""]
+    modelFilesConstrainedTo = [""]
+    supportingFilesConstrainedTo = ["ApiUtil.java"]
+    configOptions = [
+        delegatePattern: "true",
+        title: "starter",
+        useTags: "true",
+        dateLibrary: "java11",
+        java11: "true",
+        hideGenerationTimestamp: "true"
+    ]
+    validateSpec = true
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir file("${project.buildDir.path}/openapi/src/main/java")
+        }
+    }
+}
+
+compileJava.dependsOn("openApiGenerate")
